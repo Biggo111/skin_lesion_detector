@@ -38,6 +38,8 @@ dependencies:
   flutter_riverpod: ^2.4.10
   image_picker: ^1.0.7
   http: ^1.1.0
+  nb_utils: ^6.1.2
+  logger: ^2.0.2+1
 
 dev_dependencies:
   flutter_test:
