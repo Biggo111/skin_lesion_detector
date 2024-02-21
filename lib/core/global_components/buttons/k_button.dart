@@ -20,18 +20,21 @@ class KButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Container(
-      height: height,
-      width: width,
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(borderRadius),
-      ),
-      child: Center(
-        child: Text(
-          title!,
-          style: textStyle,
-          overflow: textOverflow,
+    return InkWell(
+      onTap: onPressedCallback,
+      child: Container(
+        height: height,
+        width: width,
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(borderRadius),
+        ),
+        child: Center(
+          child: Text(
+            title!,
+            style: textStyle,
+            overflow: textOverflow,
+          ),
         ),
       ),
     );

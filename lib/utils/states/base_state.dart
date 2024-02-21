@@ -21,3 +21,7 @@ class ErrorState extends BaseState {
 class EmptyDataState extends BaseState {
   const EmptyDataState();
 }
+
+class ImageCapturedState extends BaseState {
+  const ImageCapturedState();
+}
