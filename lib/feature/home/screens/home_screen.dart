@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skin_lesion_detector/core/global_components/buttons/k_button.dart';
+import 'package:skin_lesion_detector/core/services/message_services/toast_service.dart';
 import 'package:skin_lesion_detector/feature/home/controller/home_controller.dart';
 import 'package:skin_lesion_detector/utils/states/base_state.dart';
 
@@ -74,6 +75,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             KButton(
               title: "Check",
               onPressedCallback: ()async{
+                if(ref.watch(homeControllerProvider.notifier).takenImage == null){
+                  ToastService.customToast("Please take or upload a picture first!");
+                }
                 await ref.watch(homeControllerProvider.notifier).fatchLesionType();
               },
               color: Colors.deepPurple,
