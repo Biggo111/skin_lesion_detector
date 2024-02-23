@@ -1,9 +1,7 @@
 import 'dart:convert';
-import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:skin_lesion_detector/core/services/message_services/toast_service.dart';
 import 'package:skin_lesion_detector/network/api.dart';
@@ -30,9 +28,11 @@ class Network{
         'Content-type': 'multipart/form-data'
       };
       var url = API.baseUrl;
-      Response response =
-          await post(Uri.parse(url), body: jsonEncode(body), headers: headers);
-          debug(data: "response: ${response.body}");
+      var request = http.MultipartRequest('POST', Uri.parse(url));
+      request.files.add(await http.MultipartFile.fromPath('file', body['file'].path));
+      request.headers.addAll(headers);
+      var response = await request.send();
+      debug(data: "Response: ${response.statusCode}");
       return response;
     }else{
       ToastService.customToast("Check your connection!", bgColor: Colors.red);

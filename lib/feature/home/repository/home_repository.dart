@@ -1,7 +1,4 @@
-import 'dart:convert';
 import 'dart:io';
-
-import 'package:image_picker/image_picker.dart';
 import 'package:skin_lesion_detector/network/api.dart';
 import 'package:skin_lesion_detector/network/network_utils.dart';
 import 'package:skin_lesion_detector/utils/debugger.dart';
