@@ -32,7 +32,7 @@ class Network{
       request.files.add(await http.MultipartFile.fromPath('file', body['file'].path));
       request.headers.addAll(headers);
       var response = await request.send();
-      debug(data: "Response: ${response.statusCode}");
+      debug(data: "Response: ${response}");
       return response;
     }else{
       ToastService.customToast("Check your connection!", bgColor: Colors.red);
