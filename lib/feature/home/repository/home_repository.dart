@@ -4,7 +4,7 @@ import 'package:skin_lesion_detector/network/network_utils.dart';
 import 'package:skin_lesion_detector/utils/debugger.dart';
 
 class HomeRepository{
-  Future<String> fatchLesionType(File image) async {
+  Future<dynamic> fatchLesionType(File image) async {
     dynamic result;
     try {
       dynamic body = {

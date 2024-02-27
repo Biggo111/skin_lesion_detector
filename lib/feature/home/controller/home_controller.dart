@@ -15,6 +15,7 @@ class HomeController extends StateNotifier<BaseState>{
   final Ref? ref;
   File? takenImage;
   String? lesionType;
+  Map<String, dynamic>? resultPercentage;
   HomeController({this.ref}) : super(const InitialState());
 
   HomeRepository homeRepository = HomeRepository();
@@ -36,7 +37,8 @@ class HomeController extends StateNotifier<BaseState>{
   Future fatchLesionType()async{
     state = const LoadingState();
     final result = await homeRepository.fatchLesionType(takenImage!);
-    lesionType = result;
+    lesionType = result['result'];
+    resultPercentage = result['probabilities'];
     if(lesionType != null){
       state = const SuccessState();
     }

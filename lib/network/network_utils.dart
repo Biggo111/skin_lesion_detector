@@ -31,7 +31,8 @@ class Network{
       var request = http.MultipartRequest('POST', Uri.parse(url));
       request.files.add(await http.MultipartFile.fromPath('file', body['file'].path));
       request.headers.addAll(headers);
-      var response = await request.send();
+      var streamedResponse = await request.send();
+      Response response = await Response.fromStream(streamedResponse);
       debug(data: "Response: ${response}");
       return response;
     }else{
