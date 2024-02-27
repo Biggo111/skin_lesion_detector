@@ -1,8 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skin_lesion_detector/core/global_components/buttons/k_button.dart';
 import 'package:skin_lesion_detector/core/services/message_services/toast_service.dart';
 import 'package:skin_lesion_detector/feature/home/controller/home_controller.dart';
+import 'package:skin_lesion_detector/feature/home/screens/lesion_details_screen.dart';
 import 'package:skin_lesion_detector/utils/states/base_state.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
@@ -26,6 +28,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if(resultState is SuccessState)
+            ...[
             Container(
               height: 50,
               width: 200,
@@ -40,6 +43,16 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 ),
               )
             ),
+            const SizedBox(height: 20),
+            KButton(
+              title: "See details",
+              onPressedCallback: ()async{
+                Navigator.push(context, CupertinoPageRoute(builder: (context)=> const LesionDetailsScreen()));
+              },
+              color: Colors.deepPurple,
+              textStyle: const TextStyle(fontSize: 16, color: Colors.white),
+            )
+            ],
             const SizedBox(height: 20,),
             if(selectedImageState is ImageCapturedState)
               Container(

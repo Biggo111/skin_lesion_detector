@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:skin_lesion_detector/core/services/asset_services.dart';
 import 'package:skin_lesion_detector/feature/home/repository/home_repository.dart';
+import 'package:skin_lesion_detector/model/lesion_details_model.dart';
 import 'package:skin_lesion_detector/utils/debugger.dart';
 import 'package:skin_lesion_detector/utils/states/base_state.dart';
 
@@ -16,6 +17,7 @@ class HomeController extends StateNotifier<BaseState>{
   File? takenImage;
   String? lesionType;
   Map<String, dynamic>? resultPercentage;
+  LesionDetailsModel? lesionDetailsModel;
   HomeController({this.ref}) : super(const InitialState());
 
   HomeRepository homeRepository = HomeRepository();
@@ -39,6 +41,7 @@ class HomeController extends StateNotifier<BaseState>{
     final result = await homeRepository.fatchLesionType(takenImage!);
     lesionType = result['result'];
     resultPercentage = result['probabilities'];
+    lesionDetailsModel = LesionDetailsModel.fromJson(result);
     if(lesionType != null){
       state = const SuccessState();
     }
