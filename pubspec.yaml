@@ -41,6 +41,8 @@ dependencies:
   nb_utils: ^6.1.2
   logger: ^2.0.2+1
   firebase_core: ^2.25.5
+  cloud_firestore: ^4.15.6
+  firebase_storage: ^11.6.7
 
 dev_dependencies:
   flutter_test:

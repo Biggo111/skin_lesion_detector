@@ -29,7 +29,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           children: [
             if(resultState is SuccessState)
             ...[
-            Container(
+           Container(
               height: 50,
               width: 200,
               decoration: BoxDecoration(
