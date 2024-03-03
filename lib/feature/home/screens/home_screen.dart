@@ -26,6 +26,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             if(resultState is SuccessState)
             ...[

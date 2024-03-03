@@ -25,52 +25,67 @@ class LesionDetailsScreen extends ConsumerWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(18.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: 20),
-            Text(
-              "Lesion Type: ${lesionDetailsData?.result}",
-              style: const TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 20),
-            const Divider(),
-            ListView(
-              shrinkWrap: true,
-              children: [
-                ListTile(
-                  title: const Text("Melanoma"),
-                  subtitle: Text("$melanomaResult %"),
-                ),
-                ListTile(
-                  title: const Text("Melanocytic Nevi"),
-                  subtitle: Text("$melanocyticNeviResult %"),
-                ),
-                ListTile(
-                  title: const Text("Dermatofibroma"),
-                  subtitle: Text("$dermatofibromaResult %"),
-                ),
-                ListTile(
-                  title: const Text("Basal Cell Carcinoma"),
-                  subtitle: Text(basalCellCarcinomaResult),
-                ),
-                ListTile(
-                  title: const Text("Actinic Keratoses"),
-                  subtitle: Text("$actinicKeratosesResult %"),
-                ),
-                ListTile(
-                  title: const Text("Benign Keratosis Like Lesions"),
-                  subtitle: Text("$benignKeratosisLikeLesionsResult %"),
-                ),
-                ListTile(
-                  title: const Text("Vascular Lesions"),
-                  subtitle: Text("$vascularLesionResult %"),
-                ),
-              ],
-            ),
-            const Divider(),
-            checkingValidity ? const Text("The image you uploaded is not valid!", style: TextStyle(fontSize: 20, color: Colors.red, fontWeight: FontWeight.bold),) : const Text("Please contact a skin disease specialist", style: TextStyle(fontSize: 16, color: Colors.green, fontWeight: FontWeight.bold)),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    "Lesion Type : ",
+                    style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
+                  ),
+                  Expanded(
+                    child: Text(
+                      "${lesionDetailsData?.result}",
+                      style: const TextStyle(fontSize: 20, color: Colors.red, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              const Divider(),
+              ListView(
+                shrinkWrap: true,
+                children: [
+                  ListTile(
+                    title: const Text("Melanoma"),
+                    subtitle: Text("$melanomaResult %"),
+                  ),
+                  ListTile(
+                    title: const Text("Melanocytic Nevi"),
+                    subtitle: Text("$melanocyticNeviResult %"),
+                  ),
+                  ListTile(
+                    title: const Text("Dermatofibroma"),
+                    subtitle: Text("$dermatofibromaResult %"),
+                  ),
+                  ListTile(
+                    title: const Text("Basal Cell Carcinoma"),
+                    subtitle: Text(basalCellCarcinomaResult),
+                  ),
+                  ListTile(
+                    title: const Text("Actinic Keratoses"),
+                    subtitle: Text("$actinicKeratosesResult %"),
+                  ),
+                  ListTile(
+                    title: const Text("Benign Keratosis Like Lesions"),
+                    subtitle: Text("$benignKeratosisLikeLesionsResult %"),
+                  ),
+                  ListTile(
+                    title: const Text("Vascular Lesions"),
+                    subtitle: Text("$vascularLesionResult %"),
+                  ),
+                ],
+              ),
+              const Divider(),
+              checkingValidity ? const Text("Either no lesion detected or the image you uploaded is not valid!", style: TextStyle(fontSize: 20, color: Colors.red, fontWeight: FontWeight.bold),) : const Text("Please contact a skin disease specialist", style: TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.bold)),
+              const SizedBox(height: 20),
+              const Text("Note: The result is based on the image you uploaded. It is not a final diagnosis. Please consult a skin disease specialist for a final diagnosis.", style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold)),
+            ],
+          ),
         ),
       ),
     );

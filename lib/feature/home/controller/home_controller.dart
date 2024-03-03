@@ -82,4 +82,8 @@ class HomeController extends StateNotifier<BaseState>{
     return false;
   }
 
+  reset(){
+    state = const InitialState();
+  }
+
 }
